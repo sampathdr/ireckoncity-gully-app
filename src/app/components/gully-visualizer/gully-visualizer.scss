@@ -1,0 +1,53 @@
+.wall {
+  stroke: #666;
+  stroke-width: 4;
+}
+
+.top-dashed {
+  stroke: #aaa;
+  stroke-width: 3;
+  stroke-dasharray: 6 6;
+}
+
+.water {
+  fill: #8fd0ff;
+}
+
+.water-label {
+  fill: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  dominant-baseline: middle;
+}
+
+.pipe-center {
+  stroke: #333;
+  stroke-width: 3;
+}
+
+.guide-red {
+  stroke: #ff4d4f;
+  stroke-width: 2;
+}
+
+.guide-orange {
+  stroke: #faad14;
+  stroke-width: 2;
+}
+
+.dim {
+  stroke: #6b7a88;
+  stroke-width: 2;
+}
+
+.dim-text {
+  fill: #6b7a88;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.label {
+  fill: #000;
+  font-size: 13px;
+  font-weight: 600;
+}

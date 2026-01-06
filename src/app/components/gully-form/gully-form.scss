@@ -1,0 +1,14 @@
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+small {
+  color: #d32f2f;
+  font-size: 12px;
+}

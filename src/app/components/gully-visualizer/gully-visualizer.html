@@ -1,0 +1,212 @@
+<svg [attr.width]="svgWidth" [attr.height]="svgHeight" xmlns="http://www.w3.org/2000/svg">
+  <!-- ================= ARROW MARKER ================= -->
+  <defs>
+    <marker
+      id="arrow-outline"
+      markerWidth="4"
+      markerHeight="4"
+      refX="4"
+      refY="2"
+      orient="auto-start-reverse"
+      markerUnits="strokeWidth"
+    >
+      <path d="M0,0 L4,2 L0,4" fill="none" stroke="#6b7a88" stroke-width="1" />
+    </marker>
+  </defs>
+
+  <!-- ================= WATER ================= -->
+  <rect
+    class="water"
+    [attr.x]="gullyX"
+    [attr.y]="waterY"
+    [attr.width]="gullyWidthPx"
+    [attr.height]="waterHeightPx"
+  />
+
+  <text
+    class="water-label"
+    [attr.x]="gullyX + gullyWidthPx / 2"
+    [attr.y]="waterY + waterHeightPx / 2"
+    text-anchor="middle"
+  >
+    {{ gully.waterLevelInCM }} cm
+  </text>
+
+  <!-- ================= GULLY WALLS ================= -->
+  <line
+    class="wall"
+    [attr.x1]="gullyX"
+    [attr.y1]="gullyY"
+    [attr.x2]="gullyX"
+    [attr.y2]="gullyY + gullyHeightPx"
+  />
+  <line
+    class="wall"
+    [attr.x1]="gullyX + gullyWidthPx"
+    [attr.y1]="gullyY"
+    [attr.x2]="gullyX + gullyWidthPx"
+    [attr.y2]="gullyY + gullyHeightPx"
+  />
+  <line
+    class="wall"
+    [attr.x1]="gullyX"
+    [attr.y1]="gullyY + gullyHeightPx"
+    [attr.x2]="gullyX + gullyWidthPx"
+    [attr.y2]="gullyY + gullyHeightPx"
+  />
+
+  <!-- Top dashed -->
+  <line
+    class="top-dashed"
+    [attr.x1]="gullyX"
+    [attr.y1]="gullyY"
+    [attr.x2]="gullyX + gullyWidthPx"
+    [attr.y2]="gullyY"
+  />
+
+  <!-- ================= PIPE (CENTERLINE ONLY) ================= -->
+  <line
+    class="pipe-center"
+    [attr.x1]="gullyX + gullyWidthPx"
+    [attr.y1]="pipeCenterY"
+    [attr.x2]="pipeCenterX"
+    [attr.y2]="pipeCenterY"
+  />
+
+  <!-- ================= GUIDE LINES ================= -->
+  <line
+    class="guide-red"
+    [attr.x1]="gullyX"
+    [attr.y1]="pipeTopY"
+    [attr.x2]="pipeCenterX"
+    [attr.y2]="pipeTopY"
+  />
+  <line
+    class="guide-orange"
+    [attr.x1]="gullyX"
+    [attr.y1]="pipeCenterY"
+    [attr.x2]="pipeCenterX"
+    [attr.y2]="pipeCenterY"
+  />
+
+  <!-- ================= DIMENSIONS ================= -->
+
+  <!-- Full height -->
+  <line
+    class="dim"
+    marker-start="url(#arrow-outline)"
+    marker-end="url(#arrow-outline)"
+    [attr.x1]="dimX2"
+    [attr.y1]="gullyY"
+    [attr.x2]="dimX2"
+    [attr.y2]="gullyY + gullyHeightPx"
+  />
+  <text
+    class="dim-text"
+    [attr.x]="dimX2 - 12"
+    [attr.y]="gullyY + gullyHeightPx / 2"
+    [attr.transform]="'rotate(-90 ' + (dimX2 - 12) + ' ' + (gullyY + gullyHeightPx / 2) + ')'"
+    text-anchor="middle"
+  >
+    {{ gully.heightInCM }}cm
+  </text>
+
+  <!-- Bottom to pipe center -->
+  <line
+    class="dim"
+    marker-start="url(#arrow-outline)"
+    marker-end="url(#arrow-outline)"
+    [attr.x1]="dimX1"
+    [attr.y1]="pipeCenterY"
+    [attr.x2]="dimX1"
+    [attr.y2]="gullyY + gullyHeightPx"
+  />
+  <text
+    class="dim-text"
+    [attr.x]="dimX1 - 12"
+    [attr.y]="(pipeCenterY + gullyY + gullyHeightPx) / 2"
+    [attr.transform]="
+      'rotate(-90 ' + (dimX1 - 12) + ' ' + (pipeCenterY + gullyY + gullyHeightPx) / 2 + ')'
+    "
+    text-anchor="middle"
+  >
+    {{ gully.pipeHeightInCM }}cm
+  </text>
+
+  <!-- Pipe diameter -->
+  <line
+    class="dim"
+    marker-start="url(#arrow-outline)"
+    marker-end="url(#arrow-outline)"
+    [attr.x1]="dimX1"
+    [attr.y1]="pipeCenterY - pipeRadiusPx"
+    [attr.x2]="dimX1"
+    [attr.y2]="pipeCenterY"
+  />
+  <text
+    class="dim-text"
+    [attr.x]="dimX1"
+    [attr.y]="pipeCenterY"
+    [attr.transform]="'rotate(-90 ' + (dimX1 - 12) + ' ' + pipeCenterY + ')'"
+    text-anchor="middle"
+  >
+    {{ gully.pipeDiameterInCM }}cm
+  </text>
+
+  <!-- Pipe top to gully top -->
+  <line
+    class="dim"
+    marker-start="url(#arrow-outline)"
+    marker-end="url(#arrow-outline)"
+    [attr.x1]="dimX1"
+    [attr.y1]="gullyY"
+    [attr.x2]="dimX1"
+    [attr.y2]="pipeTopY"
+  />
+  <text
+    class="dim-text"
+    [attr.x]="dimX1 - 12"
+    [attr.y]="(gullyY + pipeTopY) / 2"
+    [attr.transform]="'rotate(-90 ' + (dimX1 - 12) + ' ' + (gullyY + pipeTopY) / 2 + ')'"
+    text-anchor="middle"
+  >
+    {{ gully.heightInCM - gully.pipeHeightInCM - gully.pipeDiameterInCM / 2 }}cm
+  </text>
+
+  <!-- Bottom width -->
+  <line
+    class="dim"
+    marker-start="url(#arrow-outline)"
+    marker-end="url(#arrow-outline)"
+    [attr.x1]="gullyX"
+    [attr.y1]="gullyY + gullyHeightPx + 35"
+    [attr.x2]="gullyX + gullyWidthPx"
+    [attr.y2]="gullyY + gullyHeightPx + 35"
+  />
+  <text
+    class="dim-text"
+    [attr.x]="dimRightX"
+    [attr.y]="gullyY + gullyHeightPx + 55"
+    text-anchor="middle"
+  >
+    {{ gully.widthInCM }}cm
+  </text>
+
+  <!-- Labels -->
+  <text
+    class="label"
+    [attr.x]="gullyX + gullyWidthPx / 2"
+    [attr.y]="gullyY - 25"
+    text-anchor="middle"
+  >
+    Top / Street Level
+  </text>
+  <text
+    class="label"
+    [attr.x]="gullyX + gullyWidthPx / 2"
+    [attr.y]="gullyY + gullyHeightPx + 80"
+    text-anchor="middle"
+  >
+    Bottom
+  </text>
+</svg>

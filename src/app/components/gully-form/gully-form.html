@@ -1,0 +1,40 @@
+<form [formGroup]="formGroup" class="form">
+  <div class="field">
+    <label>Height (cm)</label>
+    <input type="number" formControlName="height" />
+    <small *ngIf="formGroup.get('height')?.errors?.['required']"> Height is required </small>
+    <small *ngIf="formGroup.get('height')?.errors?.['min']"> Minimum height is 30 cm </small>
+  </div>
+
+  <div class="field">
+    <label>Width (cm)</label>
+    <input type="number" formControlName="width" />
+    <small *ngIf="formGroup.get('width')?.errors?.['required']"> Width is required </small>
+    <small *ngIf="formGroup.get('width')?.invalid"> Minimum width is 30 cm </small>
+  </div>
+
+  <div class="field">
+    <label>Pipe Height (cm)</label>
+    <input type="number" formControlName="pipeHeight" />
+    <small *ngIf="formGroup.get('pipeHeight')?.errors?.['required']">
+      Pipe Height is required
+    </small>
+  </div>
+
+  <div class="field">
+    <label>Pipe Diameter (cm)</label>
+    <input type="number" formControlName="pipeDiameter" />
+    <small *ngIf="formGroup.get('pipeDiameter')?.errors?.['required']">
+      Pipe Diameter is required
+    </small>
+    <small *ngIf="formGroup.get('pipeDiameter')?.invalid"> Minimum Pipe Diameter is 5 cm </small>
+  </div>
+  <div class="field">
+    <label>Water Level (cm)</label>
+    <input type="number" formControlName="waterLevel" />
+    <small *ngIf="formGroup.get('waterLevel')?.errors?.['required']">
+      WaterLevel is required
+    </small>
+    <small *ngIf="formGroup.get('waterLevel')?.invalid"> Minimum WaterLevel is 0 cm </small>
+  </div>
+</form>

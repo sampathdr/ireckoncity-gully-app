@@ -1,0 +1,26 @@
+<h2>Gully Viewer</h2>
+
+<button class="primary" (click)="openForm()">➕ Add Gully</button>
+
+<!-- POPUP / MODAL -->
+<div class="overlay" *ngIf="showForm">
+  <div class="modal">
+    <h3>Add Gully</h3>
+
+    <app-gully-form [formGroup]="popupForm"> </app-gully-form>
+
+    <div class="actions">
+      <button (click)="closeForm()">Cancel</button>
+      <button class="primary" (click)="saveGully()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- GULLY GRID -->
+<div class="gully-grid">
+  <app-gully-visualizer
+    *ngFor="let gullyCtrl of gullies.controls"
+    [gully]="mapFormToGully(asFormGroup(gullyCtrl))"
+  >
+  </app-gully-visualizer>
+</div>
